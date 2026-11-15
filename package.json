@@ -1,0 +1,22 @@
+{
+  "name": "evolve-health",
+  "version": "0.1.0",
+  "description": "Encrypted, local-first health records for people and pets, shared on your terms. Self-hostable storage nodes.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "evolve-health-node": "node/server.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "start": "node node/server.mjs --app web",
+    "node": "node node/server.mjs"
+  },
+  "devDependencies": {
+    "qrcode": "^1.5.4"
+  }
+}

@@ -1,0 +1,7 @@
+node_modules
+crates
+tests
+tools
+docs
+.git
+evolve-health-data

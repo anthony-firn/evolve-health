@@ -1,0 +1,20 @@
+[package]
+name = "evolve-health-argon2"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Argon2id key derivation for Evolve Health, compiled to WebAssembly with raw exports"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+argon2 = { version = "0.5.3", default-features = false, features = ["alloc"] }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true

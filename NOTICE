@@ -1,0 +1,4 @@
+Evolve Health
+Copyright 2026 Anthony Firn
+
+crates/argon2-wasm depends on the RustCrypto `argon2` crate (MIT OR Apache-2.0).

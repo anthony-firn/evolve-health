@@ -1,0 +1,6 @@
+node_modules/
+crates/*/target/
+target/
+evolve-health-data/
+*.tmp
+.DS_Store

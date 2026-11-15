@@ -1,0 +1,34 @@
+# docker compose up -d                       app + node on http://localhost:8787 (this computer only)
+# DOMAIN=health.example.org docker compose --profile https up -d
+#                                            adds Caddy with automatic HTTPS for a public domain
+services:
+  evolve-health:
+    build: .
+    restart: unless-stopped
+    environment:
+      EH_NAME: ${EH_NAME:-Evolve Health node}
+      EH_REGISTRATION: ${EH_REGISTRATION:-open}
+      EH_CODES: ${EH_CODES:-}
+      EH_QUOTA_MB: ${EH_QUOTA_MB:-2048}
+    volumes:
+      - evolve-health-data:/data
+    ports:
+      - "127.0.0.1:8787:8787"
+
+  caddy:
+    image: caddy:2
+    profiles: ["https"]
+    restart: unless-stopped
+    depends_on: [evolve-health]
+    environment:
+      DOMAIN: ${DOMAIN:?set DOMAIN to your node's public name}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./node/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+
+volumes:
+  evolve-health-data:
+  caddy-data:
