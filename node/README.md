@@ -33,6 +33,10 @@ talk to a plain `http://` node on your network. Pick one:
 
 Then add the `https://` address in Evolve Health under **Settings → Sync and devices**.
 
+A node on the same computer also works from the hosted app at `http://localhost:8787`. Chrome first asks
+whether the site may access “apps and services on this device”; allow it, or open the app from the node
+itself (`--app web`) to avoid the prompt.
+
 ## Options
 
 | Flag | Environment | Default | |
