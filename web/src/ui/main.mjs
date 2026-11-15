@@ -143,7 +143,7 @@ async function boot() {
   addEventListener('hashchange', () => { captureLinks(); app.hold = false; render(); });
   app.vault = await Vault.open();
   bindVault();
-  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
     navigator.serviceWorker.register(scriptURL(`${app.appUrl}sw.js`), { scope: app.appUrl }).catch(() => {});
   }
   render();
